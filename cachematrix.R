@@ -2,9 +2,35 @@
 ## functions do
 
 ## Write a short comment describing this function
-
+## The function creates a special "matrix", 
+# which is really a list containing a function to
+# set the value of the matrix
+# get the value of the matrix
+# set the value of the inverse
+# get the value of the inverse
 makeCacheMatrix <- function(x = matrix()) {
-
+    # set inverse to NULL 
+    i <- NULL
+    # setter function for matrix values
+    set <- function(y) {
+        # set the value of matrix as y
+        x <<- y
+        # since the values of matrix get udpated, 
+        # the mean will change, so set it as NULL
+        i <<- NULL
+    }
+    # getter function
+    # return the values of matrix
+    get <- function() x
+    
+    # setter function for matrix inverse
+    setinverse <- function(inverse) i <<- inverse
+    
+    # getter function for matrix inverse
+    getinverse <- function() i
+    list(set = set, get = get,
+         setinverse = setinverse,
+         getinverse = getinverse)
 }
 
 
